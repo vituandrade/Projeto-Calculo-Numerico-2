@@ -1,95 +1,47 @@
 # main.py
-# Projeto Unidade 2 - Cálculo Numérico
-# Menu principal que permite selecionar o Tópico (1 a 4) e o Problema (1 a 3)
-# Cada tópico é modular e independente
+# Projeto Unidade 2 - 2025.2
+# Grupo responsável pelos problemas:
+#   Tópico 1 - Questão 2
+#   Tópico 2 - Questão 2
+#   Tópico 3 - Questão 3
+#   Tópico 4 - Questão 3
 
 from topico1 import problemas_topico1 as t1
 from topico2 import problemas_topico2 as t2
 from topico3 import problemas_topico3 as t3
 from topico4 import problemas_topico4 as t4
 
-def menu_topico1():
-    while True:
-        print("\n===== TÓPICO 1 - MÉTODOS DIRETOS =====")
-        print("1 - Problema 1: Produção de componentes")
-        print("2 - Problema 2: Componentes elétricos")
-        print("3 - Problema 3: Mineração")
-        print("0 - Voltar")
-        op = input("Escolha: ").strip()
-        if op == '1': t1.problema1()
-        elif op == '2': t1.problema2()
-        elif op == '3': t1.problema3()
-        elif op == '0': break
-        else: print("Opção inválida.")
-
-def menu_topico2():
-    while True:
-        print("\n===== TÓPICO 2 - MÉTODOS ITERATIVOS =====")
-        print("1 - Problema 1: Ponte de Wheatstone (Gauss-Seidel)")
-        print("2 - Problema 2: Treliça (Gauss-Seidel)")
-        print("3 - Problema 3: Circuito elétrico (Gauss-Seidel)")
-        print("0 - Voltar")
-        op = input("Escolha: ").strip()
-        if op == '1': t2.problema1()
-        elif op == '2': t2.problema2()
-        elif op == '3': t2.problema3()
-        elif op == '0': break
-        else: print("Opção inválida.")
-
-def menu_topico3():
-    while True:
-        print("\n===== TÓPICO 3 - INTERPOLAÇÃO / MÍNIMOS QUADRADOS =====")
-        print("1 - Problema 1: Lei de Moore")
-        print("2 - Problema 2: Queda de voltagem (Lagrange / Newton)")
-        print("3 - Problema 3: Ajuste de curvas (reta, parábola, exponencial)")
-        print("0 - Voltar")
-        op = input("Escolha: ").strip()
-        if op == '1': t3.problema1()
-        elif op == '2': t3.problema2()
-        elif op == '3': t3.problema3()
-        elif op == '0': break
-        else: print("Opção inválida.")
-
-def menu_topico4():
-    while True:
-        print("\n===== TÓPICO 4 - INTEGRAÇÃO NUMÉRICA =====")
-        print("1 - Problema 1: Área da seção de rio (Trapézio / Simpson)")
-        print("2 - Problema 2: Área da superfície de rio")
-        print("3 - Problema 3: Área da seção de um navio")
-        print("0 - Voltar")
-        op = input("Escolha: ").strip()
-        if op == '1': t4.problema1()
-        elif op == '2': t4.problema2()
-        elif op == '3': t4.problema3()
-        elif op == '0': break
-        else: print("Opção inválida.")
-
 def main():
     while True:
         print("\n===================================")
         print("     PROJETO UNIDADE 2 - 2025.2")
         print("===================================")
-        print("Selecione o TÓPICO:")
-        print("1 - Sistemas Lineares (Métodos Diretos)")
-        print("2 - Sistemas Lineares (Métodos Iterativos)")
-        print("3 - Interpolação / Mínimos Quadrados")
-        print("4 - Integração Numérica")
+        print("Selecione o TÓPICO a executar:")
+        print("1 - Tópico 1 | Questão 2 - Métodos Diretos (Produção de Componentes)")
+        print("2 - Tópico 2 | Questão 2 - Métodos Iterativos (Treliça Estática)")
+        print("3 - Tópico 3 | Questão 3 - Mínimos Quadrados (Ajuste de Curvas)")
+        print("4 - Tópico 4 | Questão 3 - Integração Numérica (Área da Seção de um Navio)")
         print("0 - Sair")
+
         opcao = input("Escolha: ").strip()
 
         if opcao == '1':
-            menu_topico1()
+            print("\n>>> Executando Tópico 1 - Questão 2 (Método Direto: Eliminação de Gauss)")
+            t1.problema2()  # já implementado
         elif opcao == '2':
-            menu_topico2()
+            print("\n>>> Executando Tópico 2 - Questão 2 (Método Iterativo: Gauss-Seidel)")
+            t2.problema2()  # Treliça
         elif opcao == '3':
-            menu_topico3()
+            print("\n>>> Executando Tópico 3 - Questão 3 (Mínimos Quadrados: Ajuste de Curvas)")
+            t3.problema3()  # Ajuste de curvas
         elif opcao == '4':
-            menu_topico4()
+            print("\n>>> Executando Tópico 4 - Questão 3 (Integração Numérica: Seção de Navio)")
+            t4.problema3()  # Área do navio
         elif opcao == '0':
             print("\nEncerrando o projeto. Até mais!")
             break
         else:
-            print("Opção inválida.")
+            print("Opção inválida. Tente novamente.")
 
 if __name__ == "__main__":
     main()
