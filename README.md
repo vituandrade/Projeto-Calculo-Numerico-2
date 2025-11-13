@@ -1,1 +1,1 @@
-# Projeto-C-lculo-Num-rico-2
+# Projeto-Calculo-Numerico-2
