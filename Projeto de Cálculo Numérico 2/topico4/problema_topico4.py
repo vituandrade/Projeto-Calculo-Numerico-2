@@ -1,5 +1,5 @@
 import numpy as np
-from metodos_integracao import trapezio, simpson
+from .metodos_integracao import trapezio, simpson
 
 def problema3():
     print("\n=== TOPICO 4 - PROBLEMA 3 ===")

@@ -1,7 +1,7 @@
 # problemas_topico1.py
 # Contém apenas a Questão 2 do Tópico 1 - Métodos Diretos
 
-from metodos_diretos import gauss_elimination, calcular_residuo, norma_infinito
+from .metodos_diretos import gauss_elimination, calcular_residuo, norma_infinito
 
 def problema2():
     """

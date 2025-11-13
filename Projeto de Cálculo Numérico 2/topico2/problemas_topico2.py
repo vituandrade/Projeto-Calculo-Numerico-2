@@ -1,7 +1,7 @@
 # problemas_topico2.py
 # Contém apenas a Questão 2 do Tópico 2 - Métodos Iterativos (Gauss-Seidel)
 
-from metodos_iterativos import gauss_seidel, imprimir_resultado
+from .metodos_iterativos import gauss_seidel, imprimir_resultado
 
 def problema2():
     """
