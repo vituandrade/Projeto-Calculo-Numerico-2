@@ -1,10 +1,7 @@
 # problemas_topico3.py
-# Define os três problemas do Tópico 3 (Interpolação Polinomial / Mínimos Quadrados)
+# Define o trê problema do Tópico 3 (Interpolação Polinomial / Mínimos Quadrados)
 
 from .interpolacao_polinomial import (
-    lagrange_interpolation,
-    newton_interpolation,
-    print_newton_differences_table,
     least_squares_line,
     least_squares_parabola,
     least_squares_exponential,
@@ -16,128 +13,6 @@ from .interpolacao_polinomial import (
     coefficient_of_determination,
     calculate_residuals
 )
-
-
-# ========== PROBLEMA 1: LEI DE MOORE ==========
-def problema1():
-    """
-    Lei de Moore: Número de transistores em chips ao longo dos anos.
-    Dados: dados de transistores de 1971 a 2011
-    Objetivo: Interpolar e ajustar a lei de Moore com exponencial.
-    """
-    print("\n" + "="*70)
-    print("PROBLEMA 1: LEI DE MOORE")
-    print("="*70)
-    
-    # Dados históricos: (ano, número de transistores em milhões)
-    anos = [1971, 1974, 1978, 1982, 1985, 1989, 1993, 1997, 2000, 2003, 2007, 2011]
-    transistores = [2.3, 5, 29, 120, 275, 1180, 3100, 7500, 42000, 220000, 1720000, 4600000]
-    
-    print("\nDados historicos da Lei de Moore:")
-    print("-" * 50)
-    print(f"{'Ano':<10} {'Transistores (milhoes)':<20}")
-    print("-" * 50)
-    for ano, trans in zip(anos, transistores):
-        print(f"{ano:<10} {trans:<20}")
-    
-    # Teste: interpolação em um ano intermediário
-    ano_teste = 1980
-    print(f"\n--- Interpolacao para o ano {ano_teste} ---")
-    
-    # Lagrange
-    resultado_lagrange = lagrange_interpolation(anos, transistores, ano_teste)
-    print(f"Lagrange:  {resultado_lagrange:.2f} milhoes de transistores")
-    
-    # Newton
-    resultado_newton = newton_interpolation(anos, transistores, ano_teste)
-    print(f"Newton:    {resultado_newton:.2f} milhoes de transistores")
-    
-    # Mostrar tabela de diferenças divididas
-    print_newton_differences_table(anos, transistores)
-    
-    # Ajuste exponencial (normalizado para evitar overflow)
-    print(f"\n--- Ajuste Exponencial y = a * e^(b*x) ---")
-    try:
-        # Normaliza anos para evitar números muito grandes
-        anos_norm = [ano - 1970 for ano in anos]  # Começar de 0
-        a, b = least_squares_exponential(anos_norm, transistores)
-        print(f"Coeficientes encontrados:")
-        print(f"  a = {a:.6e}")
-        print(f"  b = {b:.6f}")
-        print(f"  (Nota: anos normalizados com base 1970)")
-        
-        # Calcula valores preditos
-        try:
-            y_predicted = [evaluate_exponential(ano_n, a, b) for ano_n in anos_norm]
-            
-            # Análise de erro
-            residuals = calculate_residuals(anos_norm, transistores, y_predicted)
-            rmse = root_mean_squared_error(residuals)
-            mae = mean_absolute_error(residuals)
-            r2 = coefficient_of_determination(transistores, y_predicted)
-            
-            print(f"\nMetricas de erro:")
-            print(f"  RMSE (Erro Quadratico Medio): {rmse:.6e}")
-            print(f"  MAE  (Erro Medio Absoluto):   {mae:.6e}")
-            print(f"  R^2   (Coeficiente de Determinacao): {r2:.6f}")
-            
-            # Predição para um ano futuro
-            ano_futuro = 2020
-            ano_futuro_norm = ano_futuro - 1970
-            pred_futuro = evaluate_exponential(ano_futuro_norm, a, b)
-            print(f"\nPredicao para {ano_futuro}: {pred_futuro:.2e} transistores")
-        except OverflowError:
-            print("Aviso: A exponencial produz valores muito grandes (overflow).")
-            print("Este e esperado para a Lei de Moore, indicando crescimento exponencial acelerado.")
-        
-    except ValueError as e:
-        print(f"Erro: {e}")
-
-
-# ========== PROBLEMA 2: QUEDA DE VOLTAGEM ==========
-def problema2():
-    """
-    Queda de Voltagem em um resistor.
-    Dados: Medições de voltagem em diferentes pontos
-    Objetivo: Interpolar usando Lagrange e Newton
-    """
-    print("\n" + "="*70)
-    print("PROBLEMA 2: QUEDA DE VOLTAGEM")
-    print("="*70)
-    
-    # Dados: (distância em metros, voltagem em volts)
-    distancia = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0]
-    voltagem = [10.0, 8.7, 7.2, 5.5, 4.0, 2.3]
-    
-    print("\nMedicoes de voltagem vs distancia:")
-    print("-" * 50)
-    print(f"{'Distancia (m)':<15} {'Voltagem (V)':<15}")
-    print("-" * 50)
-    for dist, volt in zip(distancia, voltagem):
-        print(f"{dist:<15.2f} {volt:<15.2f}")
-    
-    # Ponto de teste
-    dist_teste = 2.5
-    print(f"\n--- Interpolacao na distancia de {dist_teste} m ---")
-    
-    # Lagrange
-    resultado_lagrange = lagrange_interpolation(distancia, voltagem, dist_teste)
-    print(f"Lagrange:  {resultado_lagrange:.4f} V")
-    
-    # Newton
-    resultado_newton = newton_interpolation(distancia, voltagem, dist_teste)
-    print(f"Newton:    {resultado_newton:.4f} V")
-    
-    # Tabela de diferenças divididas
-    print_newton_differences_table(distancia, voltagem)
-    
-    # Outro ponto
-    dist_teste2 = 1.5
-    print(f"\n--- Interpolacao na distancia de {dist_teste2} m ---")
-    resultado_lagrange2 = lagrange_interpolation(distancia, voltagem, dist_teste2)
-    resultado_newton2 = newton_interpolation(distancia, voltagem, dist_teste2)
-    print(f"Lagrange:  {resultado_lagrange2:.4f} V")
-    print(f"Newton:    {resultado_newton2:.4f} V")
 
 
 # ========== PROBLEMA 3: AJUSTE DE CURVAS ==========
