@@ -88,7 +88,7 @@ def print_newton_differences_table(x_points, y_points):
     n = len(x_points)
     dd = newton_divided_differences(x_points, y_points)
     
-    print("\nTabela de Diferencas Divididas:")
+    print("\nTabela de Diferenças Divididas:")
     print("-" * 80)
     
     for i in range(n):
@@ -129,10 +129,10 @@ def least_squares_line(x_points, y_points):
 
 def least_squares_parabola(x_points, y_points):
     """
-    Ajusta uma parábola y = a + b*x + c*x^2 aos pontos usando mínimos quadrados.
+    Ajusta uma parábola y = a + b*x + c*x² aos pontos usando mínimos quadrados.
     
     Returns:
-        tupla (a, b, c) onde y = a + b*x + c*x^2
+        tupla (a, b, c) onde y = a + b*x + c*x²
     """
     n = len(x_points)
     
@@ -170,11 +170,11 @@ def least_squares_exponential(x_points, y_points):
     """
     n = len(x_points)
     
-    # Verifica se todos os y_points sao positivos
+    # Verifica se todos os y_points são positivos
     if any(y <= 0 for y in y_points):
         raise ValueError("Todos os pontos y devem ser positivos para ajuste exponencial.")
     
-    # Lineariza: z = ln(y), entao z = ln(a) + b*x
+    # Lineariza: z = ln(y), então z = ln(a) + b*x
     z_points = [math.log(y) for y in y_points]
     
     # Ajusta reta para z vs x
@@ -191,7 +191,7 @@ def evaluate_line(x, a, b):
 
 
 def evaluate_parabola(x, a, b, c):
-    """Avalia a parábola y = a + b*x + c*x^2 em um ponto x."""
+    """Avalia a parábola y = a + b*x + c*x² em um ponto x."""
     return a + b * x + c * x ** 2
 
 
@@ -229,8 +229,8 @@ def mean_absolute_error(residuals):
 
 def coefficient_of_determination(y_points, y_predicted):
     """
-    Calcula o coeficiente de determinação (R^2).
-    R^2 = 1 - (SS_res / SS_tot)
+    Calcula o coeficiente de determinação (R²).
+    R² = 1 - (SS_res / SS_tot)
     """
     y_mean = sum(y_points) / len(y_points)
     ss_res = sum((y_points[i] - y_predicted[i]) ** 2 for i in range(len(y_points)))
