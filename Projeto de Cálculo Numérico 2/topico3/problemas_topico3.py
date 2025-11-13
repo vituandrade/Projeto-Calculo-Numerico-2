@@ -94,7 +94,7 @@ def problema3():
         print(f"  R^2:   {r2_par:.6f}")
         
     except Exception as e:
-        print(f"Erro no ajuste parabólico: {e}")
+        print(f"Erro no ajuste parabolico: {e}")
     
     # === AJUSTE EXPONENCIAL: y = a * e^(b*x) ===
     print(f"\n{'='*70}")

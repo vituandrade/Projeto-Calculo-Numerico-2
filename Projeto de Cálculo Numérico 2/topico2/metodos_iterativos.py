@@ -21,12 +21,12 @@ def gauss_seidel(A, b, x0=None, tol=1e-4, max_iter=1000):
         if erro < tol:
             return x, k
 
-    raise ValueError("Gauss-Seidel não convergiu após %d iterações" % max_iter)
+    raise ValueError("Gauss-Seidel nao convergiu apos %d iteracoes" % max_iter)
 
 
 def imprimir_resultado(x, iteracoes):
     """Mostra as soluções formatadas."""
-    print("\nSolução encontrada:")
+    print("\nSolucao encontrada:")
     for i, xi in enumerate(x, start=1):
         print(f"x{i} = {xi:.6f}")
-    print(f"Iterações: {iteracoes}")
+    print(f"Iteracoes: {iteracoes}")

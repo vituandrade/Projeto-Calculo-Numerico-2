@@ -10,8 +10,8 @@ def problema2():
     Método: Gauss-Seidel com precisão de 0.0001
     """
 
-    print("\n=== Tópico 2 - Questão 2: Treliça Estática ===")
-    print("Usando o método iterativo de Gauss-Seidel (precisão = 0.0001)\n")
+    print("\n=== Topico 2 - Questao 2: Trelia Estatica ===")
+    print("Usando o metodo iterativo de Gauss-Seidel (precisao = 0.0001)\n")
 
     # Exemplo de sistema linear representando forças nas barras da treliça
     # Cada equação representa o equilíbrio em uma junta.
@@ -35,6 +35,6 @@ def problema2():
     except ValueError as e:
         print("Erro:", e)
 
-    print("\nAs variáveis x1, x2, x3 e x4 representam as forças internas em cada barra (em kN).")
-    print("Esses valores satisfazem as equações de equilíbrio nas juntas da treliça.")
-    print("O método iterativo foi escolhido por lidar bem com sistemas esparsos e acoplados.")
+    print("\nAs variaveis x1, x2, x3 e x4 representam as forcas internas em cada barra (em kN).")
+    print("Esses valores satisfazem as equacoes de equilibrio nas juntas da trelia.")
+    print("O metodo iterativo foi escolhido por lidar bem com sistemas esparsos e acoplados.")

@@ -11,8 +11,8 @@ def problema2():
     Método: Eliminação de Gauss com pivoteamento parcial.
     """
 
-    print("\n=== Tópico 1 - Questão 2: Produção de Componentes Elétricos ===")
-    print("Resolvendo o sistema linear pelo método direto (Eliminação de Gauss)\n")
+    print("\n=== Topico 1 - Questao 2: Producao de Componentes Eletricos ===")
+    print("Resolvendo o sistema linear pelo metodo direto (Eliminacao de Gauss)\n")
 
     # Sistema hipotético baseado na descrição do enunciado
     # Cada linha representa o consumo de materiais por tipo de componente
@@ -20,7 +20,7 @@ def problema2():
     #
     # Exemplo:
     #   0.5x1 + 0.25x2 + 0.10x3 = 3.89   (metal)
-    #   0.40x1 + 0.50x2 + 0.30x3 = 0.095 (plástico)
+    #   0.40x1 + 0.50x2 + 0.30x3 = 0.095 (plastico)
     #   0.30x1 + 0.25x2 + 0.20x3 = 0.282 (borracha)
     #
     A = [
@@ -36,14 +36,14 @@ def problema2():
         print("Erro ao resolver o sistema:", e)
         return
 
-    print("Soluções encontradas (quantidade de componentes por dia):")
+    print("Solucoes encontradas (quantidade de componentes por dia):")
     for i, xi in enumerate(x, start=1):
         print(f"Componente {i}: {xi:.6f}")
 
     r = calcular_residuo(A, x, b)
-    print("\nResíduo (A·x - b):", [f"{ri:.2e}" for ri in r])
-    print("Norma infinito do resíduo:", f"{norma_infinito(r):.2e}")
+    print("\nResiduo (A·x - b):", [f"{ri:.2e}" for ri in r])
+    print("Norma infinito do residuo:", f"{norma_infinito(r):.2e}")
 
-    print("\nInterpretação:")
-    print("Cada valor indica a quantidade diária de cada componente possível")
-    print("com base nas limitações de metal, plástico e borracha disponíveis.")
+    print("\nInterpretacao:")
+    print("Cada valor indica a quantidade diaria de cada componente possivel")
+    print("com base nas limitacoes de metal, plastico e borracha disponiveis.")
