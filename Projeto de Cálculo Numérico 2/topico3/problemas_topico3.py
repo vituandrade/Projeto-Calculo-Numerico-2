@@ -2,8 +2,8 @@
 # Define o trê problema do Tópico 3 (Interpolação Polinomial / Mínimos Quadrados)
 
 # Teste da questão 3
-# x: 0 1,5 2,6 4,2 6 8,2 10 11,4
-# f(x): 18 13 11 9 6 4 2 1
+# x:    0      1.5     2.6     4.2     6   8.2  10      11.4
+# f(x): 18      13      11      9      6    4    2       1
 
 from .interpolacao_polinomial import (
     least_squares_line,
