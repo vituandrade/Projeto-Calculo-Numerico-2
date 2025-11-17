@@ -2,6 +2,18 @@
 # Tópico 1 - Questão 2: Produção de Componentes Elétricos
 # Método Direto: Eliminação de Gauss com pivoteamento parcial
 
+"""
+Dados Questao 2
+n: 3
+
+Coluna 1: 15 17 19
+Coluna 2: 0.3 0.4 0.55
+Coluna 3: 1  1.2  1.5
+
+b1: 3890
+b2: 95
+b3: 282
+"""
 from .metodos_diretos import gauss_elimination, calcular_residuo, norma_infinito
 
 def imprimir_sistema_topico1(A, b):
@@ -83,3 +95,81 @@ def problema2():
     print("Cada valor indica quantos componentes de cada tipo podem ser produzidos")
     print("respeitando os limites diários de metal, plástico e borracha disponíveis.")
     print("O resíduo praticamente nulo confirma que a solução é numericamente exata.")
+
+
+
+
+
+
+def ler_sistema_usuario():
+    n = int(input("Informe o tamanho do sistema (n): ").strip())
+
+    A = []
+    print("\nInforme os coeficientes da matriz A:")
+    for i in range(n):
+        linha = input(f"  Coluna {i+1} (separe por espaço): ").strip().split()
+        linha = [float(x) for x in linha]
+        if len(linha) != n:
+            raise ValueError("Número de coeficientes inválido.")
+        A.append(linha)
+
+    print("\nInforme os valores do vetor b:")
+    b = []
+    for i in range(n):
+        bi = float(input(f"  b{i+1}: ").strip())
+        b.append(bi)
+
+    return A, b
+
+
+def imprimir_sistema(A, b):
+    print("\n=== Sistema Linear ===")
+    n = len(A)
+    for i in range(n):
+        linha = "  "
+        for j in range(n):
+            linha += f"({A[i][j]:.2f}) x{j+1}  "
+        linha += f" = {b[i]:.2f}"
+        print(linha)
+    print("----------------------------------------------\n")
+
+
+def SistemaLinearDireto():
+    print("\n==============================================")
+    print("   RESOLUÇÃO DE SISTEMA LINEAR (METODO DIRETO)")
+    print("==============================================\n")
+
+    # Entrada de dados:
+    A, b = ler_sistema_usuario()
+
+    # Exibir o sistema:
+    imprimir_sistema(A, b)
+
+    # Resolver:
+    try:
+        x = gauss_elimination(A, b)
+    except ValueError as e:
+        print("Erro ao resolver o sistema:", e)
+        return
+
+    # Mostrar solução:
+    print("\n=== Solução do Sistema ===")
+    for i, xi in enumerate(x, start=1):
+        print(f"x{i} = {xi:.2f}")
+
+    # Calcular resíduo:
+    r = calcular_residuo(A, x, b)
+    print("\nResíduo (A·x - b):")
+    for i, ri in enumerate(r, start=1):
+        print(f"  r{i} = {ri:.6e}")
+
+    print("\nNorma infinito do resíduo:", norma_infinito(r))
+
+    print("\n==============================================")
+    print("Sistema resolvido com sucesso.")
+    print("==============================================\n")
+
+
+
+
+

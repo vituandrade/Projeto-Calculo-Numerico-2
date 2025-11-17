@@ -27,7 +27,7 @@ def main():
 
         if opcao == '1':
             print("\n>>> Executando Topico 1 - Questao 2 (Metodo Direto: Eliminacao de Gauss)")
-            t1.problema2()  # já implementado
+            t1.SistemaLinearDireto()  # já implementado
         elif opcao == '2':
             print("\n>>> Executando Topico 2 - Questao 2 (Metodo Iterativo: Gauss-Seidel)")
             t2.problema2()  # Treliça
@@ -36,7 +36,7 @@ def main():
             t3.problema3()  # Ajuste de curvas
         elif opcao == '4':
             print("\n>>> Executando Topico 4 - Questao 3 (Integracao Numerica: Secao de Navio)")
-            t4.problemaGenerico()  # Área do navio
+            t4.IntegracaoNumerica()  # Área do navio
         elif opcao == '0':
             print("\nEncerrando o projeto. Ate mais!")
             break

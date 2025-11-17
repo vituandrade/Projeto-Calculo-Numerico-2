@@ -11,7 +11,7 @@ larguras: 3 2.92 2.75 2.52 2.3 1.84 0.92 0
 def ler_lista_float(msg):
     return list(map(float, input("\n" + msg).strip().split()))
 
-def problemaGenerico():
+def IntegracaoNumerica():
     print("\n======================================================================")
     print("INTEGRACAO NUMERICA GENERICA (TRAPEZIOS / SIMPSON)")
     print("======================================================================\n")
@@ -69,6 +69,5 @@ def problemaGenerico():
     print(f"Trapezios: {area_trap:.6f}")
     print(f"Simpson:   {area_simp:.6f}\n")
     
-    #coletando ditancias verticais
 
     
