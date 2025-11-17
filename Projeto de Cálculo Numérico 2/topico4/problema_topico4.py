@@ -27,13 +27,13 @@ def IntegracaoNumerica():
         y = ler_lista_float("Digite os valores das alturas separados por espaço: ")
 
         if len(x) != len(y):
-            print("Erro: As quantidades de alturas e larguras devem ser iguais!")
+            print("Erro: A quantidade de alturas e larguras devem ser iguais!")
             return
         
-    # Caso 2: usuário informa apenas y e Δx
+    # Caso 2: usuário informa apenas x e Δy
     elif opc == "2":
         x = ler_lista_float("Digite os valores das larguras separados por espaço: ")
-        dy = float(input("Digite o valor do espacamento Δx: "))
+        dy = float(input("Digite o valor do espacamento Δy: "))
         y = [i * dy for i in range(len(x))]
     else:
         print("Opcao inválida.")
