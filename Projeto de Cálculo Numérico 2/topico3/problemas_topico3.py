@@ -1,6 +1,10 @@
 # problemas_topico3.py
 # Define o trê problema do Tópico 3 (Interpolação Polinomial / Mínimos Quadrados)
 
+# Teste da questão 3
+# x: 0 1,5 2,6 4,2 6 8,2 10 11,4
+# f(x): 18 13 11 9 6 4 2 1
+
 from .interpolacao_polinomial import (
     least_squares_line,
     least_squares_parabola,
@@ -19,16 +23,42 @@ from .interpolacao_polinomial import (
 def problema3():
     """
     Ajuste de curvas com reta, parábola e exponencial.
-    Dados: Dados de um experimento científico
+    Dados: Inseridos pelo usuário
     Objetivo: Encontrar o melhor ajuste para os dados
     """
     print("\n" + "="*70)
     print("PROBLEMA 3: AJUSTE DE CURVAS (RETA, PARABOLA, EXPONENCIAL)")
     print("="*70)
     
-    # Dados experimentais
-    x_dados = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0]
-    y_dados = [2.1, 4.9, 8.2, 14.3, 20.8, 30.5, 42.1, 57.0]
+    # Entrada de dados do usuário
+    print("\n--- ENTRADA DE DADOS ---")
+    print("Digite os pares (x, f(x)) para análise de regressão.")
+    print("Quando terminar, deixe x em branco e pressione ENTER.\n")
+    
+    x_dados = []
+    y_dados = []
+    contador = 1
+    
+    while True:
+        try:
+            x_input = input(f"Ponto {contador} - Digite x (ou ENTER para terminar): ").strip()
+            if x_input == "":
+                break
+            
+            x_val = float(x_input)
+            y_input = input(f"Ponto {contador} - Digite f(x): ").strip()
+            y_val = float(y_input)
+            
+            x_dados.append(x_val)
+            y_dados.append(y_val)
+            contador += 1
+        except ValueError:
+            print("Erro: Digite valores numericos validos!\n")
+            continue
+    
+    if len(x_dados) < 2:
+        print("Erro: É necessário pelo menos 2 pontos para fazer regressão!")
+        return
     
     print("\nDados experimentais:")
     print("-" * 50)
@@ -36,6 +66,11 @@ def problema3():
     print("-" * 50)
     for x, y in zip(x_dados, y_dados):
         print(f"{x:<10.2f} {y:<10.2f}")
+    
+    # Inicializar variáveis para evitar UnboundLocalError
+    rmse_lin = mae_lin = r2_lin = None
+    rmse_par = mae_par = r2_par = None
+    rmse_exp = mae_exp = r2_exp = None
     
     # === AJUSTE LINEAR: y = a + b*x ===
     print(f"\n{'='*70}")
@@ -131,15 +166,34 @@ def problema3():
     print('='*70)
     print(f"{'Modelo':<15} {'RMSE':<15} {'MAE':<15} {'R^2':<15}")
     print('-'*70)
-    print(f"{'Linear':<15} {rmse_lin:<15.6f} {mae_lin:<15.6f} {r2_lin:<15.6f}")
-    print(f"{'Parabolico':<15} {rmse_par:<15.6f} {mae_par:<15.6f} {r2_par:<15.6f}")
-    print(f"{'Exponencial':<15} {rmse_exp:<15.6f} {mae_exp:<15.6f} {r2_exp:<15.6f}")
     
-    # Identificar melhor modelo
-    models = {
-        'Linear': r2_lin,
-        'Parabolico': r2_par,
-        'Exponencial': r2_exp
-    }
-    best_model = max(models, key=models.get)
-    print(f"\nMelhor modelo (maior R^2): {best_model}")
+    # Exibir resultados apenas se foram calculados
+    if rmse_lin is not None:
+        print(f"{'Linear':<15} {rmse_lin:<15.6f} {mae_lin:<15.6f} {r2_lin:<15.6f}")
+    else:
+        print(f"{'Linear':<15} {'(falhou)':<15} {'(falhou)':<15} {'(falhou)':<15}")
+    
+    if rmse_par is not None:
+        print(f"{'Parabolico':<15} {rmse_par:<15.6f} {mae_par:<15.6f} {r2_par:<15.6f}")
+    else:
+        print(f"{'Parabolico':<15} {'(falhou)':<15} {'(falhou)':<15} {'(falhou)':<15}")
+    
+    if rmse_exp is not None:
+        print(f"{'Exponencial':<15} {rmse_exp:<15.6f} {mae_exp:<15.6f} {r2_exp:<15.6f}")
+    else:
+        print(f"{'Exponencial':<15} {'(falhou)':<15} {'(falhou)':<15} {'(falhou)':<15}")
+    
+    # Identificar melhor modelo (apenas entre os que convergiram)
+    models = {}
+    if r2_lin is not None:
+        models['Linear'] = r2_lin
+    if r2_par is not None:
+        models['Parabolico'] = r2_par
+    if r2_exp is not None:
+        models['Exponencial'] = r2_exp
+    
+    if models:
+        best_model = max(models, key=models.get)
+        print(f"\nMelhor modelo (maior R^2): {best_model}")
+    else:
+        print("\nNenhum modelo convergiu com sucesso!")
