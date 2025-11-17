@@ -4,7 +4,7 @@ from .metodos_integracao import trapezio, simpson
 
 Dados Questão 3
 larguras: 3 2.92 2.75 2.52 2.3 1.84 0.92 0
-Δx = 0.4
+Δy = 0.4
 
 """
 
@@ -17,14 +17,14 @@ def IntegracaoNumerica():
     print("======================================================================\n")
 
     print("Você deseja fornecer:")
-    print("1 - Alturas e larguras manualmente")
-    print("2 - Apenas larguras (alturas fixas Δx)")
+    print("1 - Alturas e larguras")
+    print("2 - Larguras e altura fixa Δy")
     opc = input("Opcao: ").strip()
 
     # Caso 1: usuário informa x e y
     if opc == "1":
-        x = ler_lista_float("Digite os valores das alturas separados por espaço: ")
-        y = ler_lista_float("Digite os valores das larguras separados por espaço: ")
+        x = ler_lista_float("Digite os valores das larguras separados por espaço: ")
+        y = ler_lista_float("Digite os valores das alturas separados por espaço: ")
 
         if len(x) != len(y):
             print("Erro: As quantidades de alturas e larguras devem ser iguais!")
@@ -32,42 +32,32 @@ def IntegracaoNumerica():
         
     # Caso 2: usuário informa apenas y e Δx
     elif opc == "2":
-        y = ler_lista_float("Digite os valores das larguras separados por espaço: ")
-        dx = float(input("Digite o valor do espacamento Δx: "))
-        x = [i * dx for i in range(len(y))]
+        x = ler_lista_float("Digite os valores das larguras separados por espaço: ")
+        dy = float(input("Digite o valor do espacamento Δx: "))
+        y = [i * dy for i in range(len(x))]
     else:
         print("Opcao inválida.")
         return
 
     print("\n--------------------------------------------------")
     print("Pontos informados:")
-    print("alturas       larguras")
+    print("larguras       altura")
     print("--------------------------------------------------")
-    for xi, yi in zip(x, y):
-        print(f"{xi:>6.3f}     {yi:>8.3f}")
+    for xi, yi in zip(y, x):
+        print(f"{yi:>6.3f}     {xi:>8.3f}")
     print()
 
     # -------------------------- Trapézio --------------------------
-    print("======================================================================")
+    print("======================================================================\n")
     print("REGRA DOS TRAPEZIOS (COMPOSTA)")
-    print("======================================================================")
-
-    area_trap = trapezio(x, y)
+    area_trap = trapezio(y, x)
     print(f"Area (Trapezios): {area_trap:.6f}\n")
 
     # -------------------------- Simpson --------------------------
-    print("======================================================================")
     print("REGRA DE SIMPSON (COMPOSTA)")
-    print("======================================================================")
-
-    area_simp = simpson(x, y)
+    area_simp = simpson(y, x)
     print(f"Area (Simpson):   {area_simp:.6f}\n")
-
     print("======================================================================")
-    print("RESULTADOS FINAIS")
-    print("======================================================================")
-    print(f"Trapezios: {area_trap:.6f}")
-    print(f"Simpson:   {area_simp:.6f}\n")
     
 
     
