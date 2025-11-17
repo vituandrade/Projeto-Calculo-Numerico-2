@@ -1,19 +1,74 @@
-import numpy as np
 from .metodos_integracao import trapezio, simpson
 
-def problema3():
-    print("\n=== TOPICO 4 - PROBLEMA 3 ===")
-    print("Calculo da area da secao do trecho mais largo de um navio\n")
+"""
 
-    # Distâncias verticais (iguais: 0.4 m)
-    y = np.array([3.00, 2.92, 2.75, 2.52, 2.30, 1.84, 0.92, 0.00])
-    x = np.arange(0, len(y)) * 0.4  # espaçamento constante de 0.4 m
+Dados Questão 3
+larguras: 3 2.92 2.75 2.52 2.3 1.84 0.92 0
+Δx = 0.4
+
+"""
+
+def ler_lista_float(msg):
+    return list(map(float, input("\n" + msg).strip().split()))
+
+def problemaGenerico():
+    print("\n======================================================================")
+    print("INTEGRACAO NUMERICA GENERICA (TRAPEZIOS / SIMPSON)")
+    print("======================================================================\n")
+
+    print("Você deseja fornecer:")
+    print("1 - Alturas e larguras manualmente")
+    print("2 - Apenas larguras (alturas fixas Δx)")
+    opc = input("Opcao: ").strip()
+
+    # Caso 1: usuário informa x e y
+    if opc == "1":
+        x = ler_lista_float("Digite os valores das alturas separados por espaço: ")
+        y = ler_lista_float("Digite os valores das larguras separados por espaço: ")
+
+        if len(x) != len(y):
+            print("Erro: As quantidades de alturas e larguras devem ser iguais!")
+            return
+        
+    # Caso 2: usuário informa apenas y e Δx
+    elif opc == "2":
+        y = ler_lista_float("Digite os valores das larguras separados por espaço: ")
+        dx = float(input("Digite o valor do espacamento Δx: "))
+        x = [i * dx for i in range(len(y))]
+    else:
+        print("Opcao inválida.")
+        return
+
+    print("\n--------------------------------------------------")
+    print("Pontos informados:")
+    print("alturas       larguras")
+    print("--------------------------------------------------")
+    for xi, yi in zip(x, y):
+        print(f"{xi:>6.3f}     {yi:>8.3f}")
+    print()
+
+    # -------------------------- Trapézio --------------------------
+    print("======================================================================")
+    print("REGRA DOS TRAPEZIOS (COMPOSTA)")
+    print("======================================================================")
 
     area_trap = trapezio(x, y)
-    # Para simpson, usar número par de subintervalos -> len(y)-1 = 7 (ímpar), remover último ponto se necessário
-    area_simp = simpson(x[:-1], y[:-1])
+    print(f"Area (Trapezios): {area_trap:.6f}\n")
 
-    print(f"Area aproximada pela Regra dos Trapezios: {area_trap:.4f} m2")
-    print(f"Area aproximada pela Regra de Simpson: {area_simp:.4f} m2")
+    # -------------------------- Simpson --------------------------
+    print("======================================================================")
+    print("REGRA DE SIMPSON (COMPOSTA)")
+    print("======================================================================")
 
-    print("\nObs.: As regras foram aplicadas com dx = 0,4 m e dados da figura do navio.")
+    area_simp = simpson(x, y)
+    print(f"Area (Simpson):   {area_simp:.6f}\n")
+
+    print("======================================================================")
+    print("RESULTADOS FINAIS")
+    print("======================================================================")
+    print(f"Trapezios: {area_trap:.6f}")
+    print(f"Simpson:   {area_simp:.6f}\n")
+    
+    #coletando ditancias verticais
+
+    

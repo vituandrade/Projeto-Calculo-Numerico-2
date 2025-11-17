@@ -36,7 +36,7 @@ def main():
             t3.problema3()  # Ajuste de curvas
         elif opcao == '4':
             print("\n>>> Executando Topico 4 - Questao 3 (Integracao Numerica: Secao de Navio)")
-            t4.problema3()  # Área do navio
+            t4.problemaGenerico()  # Área do navio
         elif opcao == '0':
             print("\nEncerrando o projeto. Ate mais!")
             break
