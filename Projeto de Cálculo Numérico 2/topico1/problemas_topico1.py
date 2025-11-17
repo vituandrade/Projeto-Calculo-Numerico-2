@@ -6,13 +6,17 @@
 Dados Questao 2
 n: 3
 
-Coluna 1: 15 17 19
-Coluna 2: 0.3 0.4 0.55
-Coluna 3: 1  1.2  1.5
+Matriz:
+Linha 1: 15 17 19
+Linha 2: 0.3 0.4 0.55
+Linha 3: 1  1.2  1.5
 
+Vetor:
 b1: 3890
 b2: 95
 b3: 282
+ 
+b : 3890 95 282
 """
 from .metodos_diretos import gauss_elimination, calcular_residuo, norma_infinito
 
@@ -99,25 +103,24 @@ def problema2():
 
 
 
-
-
 def ler_sistema_usuario():
     n = int(input("Informe o tamanho do sistema (n): ").strip())
 
     A = []
     print("\nInforme os coeficientes da matriz A:")
     for i in range(n):
-        linha = input(f"  Coluna {i+1} (separe por espaço): ").strip().split()
+        linha = input(f"  Linha {i+1} (separe por espaço): ").strip().split()
         linha = [float(x) for x in linha]
         if len(linha) != n:
             raise ValueError("Número de coeficientes inválido.")
         A.append(linha)
 
-    print("\nInforme os valores do vetor b:")
-    b = []
-    for i in range(n):
-        bi = float(input(f"  b{i+1}: ").strip())
-        b.append(bi)
+    print("\nInforme todos os valores do vetor b (separados por espaço):")
+    b = input("  b: ").strip().split()
+    b = [float(x) for x in b]
+
+    if len(b) != n:
+        raise ValueError("Quantidade de valores do vetor b incorreta.")
 
     return A, b
 

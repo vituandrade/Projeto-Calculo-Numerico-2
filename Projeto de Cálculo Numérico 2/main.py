@@ -30,7 +30,7 @@ def main():
             t1.SistemaLinearDireto()  # já implementado
         elif opcao == '2':
             print("\n>>> Executando Topico 2 - Questao 2 (Metodo Iterativo: Gauss-Seidel)")
-            t2.problema2()  # Treliça
+            t2.SistemaLinearIterativo()  # Treliça
         elif opcao == '3':
             print("\n>>> Executando Topico 3 - Questao 3 (Minimos Quadrados: Ajuste de Curvas)")
             t3.problema3()  # Ajuste de curvas

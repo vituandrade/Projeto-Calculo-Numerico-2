@@ -1,8 +1,29 @@
 # problemas_topico2.py
 # Contém a Questão 2 do Tópico 2 - Métodos Iterativos (Gauss-Seidel)
-
+from topico1 import problemas_topico1 as t1
 from .metodos_iterativos import gauss_seidel
 import math
+
+"""
+Dados Questão 2:
+n = 10
+
+MATRIZ:
+-0.7071 0 -0.7071 0 0 0 0 0 0 0
+0 -1 -0.7071 0 0.5 0 1 0 0 0
+0 0 0.7071 0 0.8660 0 0 0 0 0
+-0.7071 0 0.7071 1 0 0 0 0 0 0
+0 0 0 0 -0.8660 -0.5 0 0 0 0
+0 0 0 -1 -0.5 0.8660 0 0 0 0
+0 0 0 0 0 -0.8660 -1 0 0 0
+0.7071 1 0 0 0 0 0 1 0 0
+0.7071 0 0 0 0 0 0 0 1 0
+0 0 0 0 0 0.5 0 0 0 1
+
+VETOR:
+b: 500 0 0 0 100 0 0 0 0 0 
+
+"""
 
 # Constantes trigonométricas para os ângulos
 s45 = math.sin(math.pi / 4)  # 45 graus
@@ -39,7 +60,7 @@ def problema2():
     Método: Gauss-Seidel com precisão de 0.0001
     """
 
-    print("\n=== Topico 2 - Questao 2: Trelia Estatica ===")
+    print("\n=== Topico 2 - Questao 2: Trelica Estatica ===")
     print("Usando o metodo iterativo de Gauss-Seidel (precisao = 0.0001)\n")
 
     # --------------------------------------------------------------------------
@@ -112,3 +133,37 @@ def problema2():
 
     except ValueError as e:
         print("Erro:", e)
+
+############################################################################################
+
+def SistemaLinearIterativo():
+    print("\n==============================================")
+    print("   RESOLUÇÃO DE SISTEMA LINEAR (METODO ITERATIVO)")
+    print("==============================================\n")
+
+    # recepção de dados do usuario
+    A, b = t1.ler_sistema_usuario()
+
+    # imprime o sistema linear
+    t1.imprimir_sistema(A, b)
+
+    # aproximação inicial 
+    x0 = [0.0] * 10
+    precisao = 1e-4
+
+    try:
+        x, it = gauss_seidel(A, b, x0, tol=precisao)
+    except ValueError as e:
+        print("Erro:", e)
+
+    # Mostrar solução:
+    print("\n=== Solução do Sistema ===")
+    for i, xi in enumerate(x, start=1):
+        print(f"x{i} = {xi:.2f}")
+
+    print(f"\nConcluido em {it} iteracoes.")
+    print("\n==============================================")
+    print("Sistema resolvido com sucesso.")
+    print("==============================================\n")       
+
+    
