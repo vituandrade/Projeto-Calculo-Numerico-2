@@ -41,7 +41,7 @@ def IntegracaoNumerica():
 
     print("\n--------------------------------------------------")
     print("Pontos informados:")
-    print("larguras       altura")
+    print("larguras       alturas")
     print("--------------------------------------------------")
     for xi, yi in zip(y, x):
         print(f"{yi:>6.3f}     {xi:>8.3f}")
