@@ -9,7 +9,7 @@
 from topico1 import problemas_topico1 as t1
 from topico2 import problemas_topico2 as t2
 from topico3 import problemas_topico3 as t3
-from topico4 import problema_topico4 as t4
+from topico4 import problemas_topico4 as t4
 
 def main():
     while True:

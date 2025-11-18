@@ -94,8 +94,8 @@ def problema3():
         r2_lin = coefficient_of_determination(y_dados, y_pred_lin)
         
         print(f"\nMetricas de erro:")
-        print(f"  RMSE: {rmse_lin:.6f}")
-        print(f"  MAE:  {mae_lin:.6f}")
+        print(f"  Raiz quadrada do erro medio (RMSE): {rmse_lin:.6f}")
+        print(f"  Erro absoluto medio (MAE):  {mae_lin:.6f}")
         print(f"  R^2:   {r2_lin:.6f}")
         
     except Exception as e:
@@ -124,8 +124,8 @@ def problema3():
         r2_par = coefficient_of_determination(y_dados, y_pred_par)
         
         print(f"\nMetricas de erro:")
-        print(f"  RMSE: {rmse_par:.6f}")
-        print(f"  MAE:  {mae_par:.6f}")
+        print(f"  Raiz quadrada do erro medio (RMSE): {rmse_par:.6f}")
+        print(f"  Erro absoluto medio (MAE):  {mae_par:.6f}")
         print(f"  R^2:   {r2_par:.6f}")
         
     except Exception as e:
@@ -153,8 +153,8 @@ def problema3():
         r2_exp = coefficient_of_determination(y_dados, y_pred_exp)
         
         print(f"\nMetricas de erro:")
-        print(f"  RMSE: {rmse_exp:.6f}")
-        print(f"  MAE:  {mae_exp:.6f}")
+        print(f"  Raiz quadrada do erro medio (RMSE): {rmse_exp:.6f}")
+        print(f"  Erro absoluto medio (MAE):  {mae_exp:.6f}")
         print(f"  R^2:   {r2_exp:.6f}")
         
     except Exception as e:
@@ -164,7 +164,7 @@ def problema3():
     print(f"\n{'='*70}")
     print("RESUMO COMPARATIVO")
     print('='*70)
-    print(f"{'Modelo':<15} {'RMSE':<15} {'MAE':<15} {'R^2':<15}")
+    print(f"{'Modelo':<15} {'RMSE (EMQ)':<15} {'MAE (EAM)':<15} {'R^2':<15}")
     print('-'*70)
     
     # Exibir resultados apenas se foram calculados
