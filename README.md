@@ -1,4 +1,4 @@
-📘 Projeto – Cálculo Numérico (2025.2)
+# 📘 Projeto – Cálculo Numérico (2025.2)
 
 Este repositório reúne as implementações desenvolvidas para o projeto da
 disciplina Cálculo Numérico – 2025.2, envolvendo métodos numéricos
@@ -7,7 +7,7 @@ O objetivo geral é criar soluções computacionais reutilizáveis,
 permitindo novas entradas e adaptabilidade para problemas semelhantes
 aos apresentados no enunciado.
 
-🧩 Estrutura Geral do Projeto
+## 🧩 Estrutura Geral do Projeto
 
 O projeto está dividido em quatro tópicos principais:
 
@@ -19,7 +19,7 @@ O projeto está dividido em quatro tópicos principais:
 As explicações abaixo descrevem somente o escopo geral e os métodos
 abordados, sem entrar em respostas específicas dos problemas.
 
-📌 Tópico 01 — Sistemas de Equações Lineares (Métodos Diretos)
+### 📌 Tópico 01 — Sistemas de Equações Lineares (Métodos Diretos)
 
 Os problemas deste tópico envolvem modelagem de situações reais por meio
 de sistemas lineares, como:
@@ -37,7 +37,7 @@ Métodos Diretos Utilizados
 Cada método foi implementado visando clareza, robustez e a possibilidade
 de inserir novos dados arbitrários.
 
-📌 Tópico 02 — Sistemas Lineares (Métodos Iterativos)
+### 📌 Tópico 02 — Sistemas Lineares (Métodos Iterativos)
 
 Neste tópico lidamos com sistemas provenientes de:
 
@@ -52,7 +52,7 @@ Método Iterativo Utilizado
 As implementações permitem entrada do sistema, definição de tolerância e
 chute inicial.
 
-📌 Tópico 03 — Interpolação Polinomial e Mínimos Quadrados
+### 📌 Tópico 03 — Interpolação Polinomial e Mínimos Quadrados
 
 Trabalhamos com aproximação de funções a partir de dados experimentais.
 
@@ -64,7 +64,7 @@ Métodos Implementados
 
 Também é calculado o erro quadrático de cada ajuste.
 
-📌 Tópico 04 — Integração Numérica
+### 📌 Tópico 04 — Integração Numérica
 
 Usado para calcular áreas aproximadas a partir de dados discretos.
 
@@ -73,14 +73,9 @@ Métodos Implementados
 -   Regra dos Trapézios
 -   Regra de Simpson 1/3 Repetida
 
-🛠️ Requisitos Gerais
+## 🛠️ Requisitos Gerais
 
 -   Entrada de novos dados
 -   Interface clara com o usuário
 -   Opção de repetir cálculos
 -   Relatório com contribuição de cada membro da equipe
-
-📁 Organização Sugerida do Repositório
-
-/ ├── topico01_metodos_diretos/ ├── topico02_metodos_iterativos/ ├──
-topico03_interpolacao_regressao/ ├── topico04_integracao/ └── README.md

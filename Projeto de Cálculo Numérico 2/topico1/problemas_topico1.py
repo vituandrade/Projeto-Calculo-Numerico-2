@@ -18,19 +18,6 @@ b : 3890 95 282
 """
 from .metodos_diretos import gauss_elimination, calcular_residuo, norma_infinito
 
-def imprimir_sistema_topico1(A, b):
-    """Imprime o sistema 3x3 do Tópico 1, Questão 2."""
-    print("\n--- Sistema Linear (A·x = b) ---")
-    nomes_eq = ["Metal (g)", "Plastico (g)", "Borracha (g)"]
-    
-    for i in range(len(A)):
-        linha = f"Eq {i+1} ({nomes_eq[i]:<12}): ["
-        linha += f" ({A[i][0]:.2f} * x1) + ({A[i][1]:.2f} * x2) + ({A[i][2]:.2f} * x3) ]"
-        linha += f" = {b[i]:.1f}"
-        print(linha)
-    print("----------------------------------\n")
-
-
 def ler_sistema_usuario():
     n = int(input("Informe o tamanho do sistema (n): ").strip())
 
